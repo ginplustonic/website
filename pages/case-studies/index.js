@@ -18,7 +18,7 @@ export default function CaseStudies({ caseStudies }) {
     // Initialise state
     setCases(caseStudies);
     setFilteredCases(caseStudies);
-  }, []);
+  }, [caseStudies]); // Add caseStudies as a dependency
 
   return (
     <>
@@ -87,7 +87,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       caseStudies: response.items,
-      revalidate: 60,
     },
+    revalidate: 60, // Revalidate every 60 seconds
   };
 };

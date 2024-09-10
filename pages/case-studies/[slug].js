@@ -113,30 +113,6 @@ export default function Case({ caseStudy }) {
   );
 }
 
-// export async function getStaticProps({ params }) {
-//   const { slug } = params;
-//   const response = await client.getEntries({
-//     content_type: "caseStudy",
-//     "fields.slug": slug,
-//   });
-
-//   if (!response?.items?.length) {
-//     return {
-//       redirect: {
-//         destination: "/case-studies",
-//         permanent: false,
-//       },
-//     };
-//   }
-
-//   return {
-//     props: {
-//       caseStudy: response?.items?.[0] || null,
-//       revalidate: 60,
-//     },
-//   };
-// }
-
 export async function getStaticProps({ params, preview = false }) {
   const cfClient = preview ? previewClient : client;
   const { slug } = params;
@@ -169,18 +145,6 @@ export async function getStaticProps({ params, preview = false }) {
     };
   }
 }
-
-// export async function getStaticPaths() {
-//   const response = await client.getEntries({ content_type: "caseStudy" });
-//   const paths = response.items.map((item) => ({
-//     params: { slug: item.fields.slug },
-//   }));
-
-//   return {
-//     paths,
-//     fallback: true,
-//   };
-// }
 
 export async function getStaticPaths() {
   try {
